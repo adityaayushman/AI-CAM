@@ -8,7 +8,7 @@ This repository connects real-time video stream inferences, a local MLOps pipeli
 
 ## Project Architecture 
 
-The application consists of distinct decoupled components. Here is an extremely detailed breakdown of every integrated part of the repository:
+The application is made of decoupled components:
 
 ### 1. Computer Vision Runtime (`model/classroom_analytics.py`)
 - **Backend Setup**: Initializes `cv2.VideoCapture(0, cv2.CAP_DSHOW)` (explicitly using the Windows DirectShow driver to prevent Media Foundation initialisation freezes).
