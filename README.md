@@ -6,7 +6,7 @@ This repository connects real-time video stream inferences, a local MLOps pipeli
 
 ---
 
-## 🏗️ Project Architecture 
+## Project Architecture 
 
 The application consists of distinct decoupled components. Here is an extremely detailed breakdown of every integrated part of the repository:
 
@@ -55,7 +55,7 @@ The application consists of distinct decoupled components. Here is an extremely 
 
 ---
 
-## 💻 Setup Instructions
+## Setup Instructions
 
 1. **Clone the Repository & Prepare Path**
    ```bash
