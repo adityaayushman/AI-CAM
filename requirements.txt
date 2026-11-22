@@ -2,7 +2,7 @@ opencv-python
 numpy
 pandas
 flask
-tensorflow
+flask-cors
+requests
 mlflow
 scikit-learn
-flask-cors

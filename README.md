@@ -1,10 +1,14 @@
 # AI Classroom Analytics
 
-An AI-powered application designed to detect and rate student engagement in a classroom environment using computer vision and machine learning. 
+A prototype that counts faces in a classroom camera feed with OpenCV and reports a head-count-based engagement score through an API-key-guarded Flask API and a React dashboard.
 
-This repository connects real-time video stream inferences, a local MLOps pipeline for tracking algorithm parameters, and a protected REST API for retrieving session-level metrics. It includes infrastructure scaffolds for CI / CD and Containerization.
+**Current limits**
 
----
+- The engagement score is `min(face_count * 10, 100)`. It is a simple formula, not a learned model.
+- The dashboard API returns simulated values until the camera script is connected to it.
+- The MLflow pipeline trains a sample Iris classifier to demonstrate experiment tracking. It is not trained on classroom data.
+
+The repository also includes Docker, Jenkins and GitHub Actions scaffolding.
 
 ## Project Architecture 
 
@@ -49,7 +53,7 @@ The application is made of decoupled components:
     3. `Check Python`: Triggers a `.bat` execution invoking a local static interpreter `C:\Users\Dhrumil Patel\AppData\Local\Programs\Python\Python313\python.exe --version` to enforce execution stability mapping.
 
 ### 6. Sub-Directories & Configurations
-- **Dependencies (`requirements.txt`)**: Strict configuration packages handling (`opencv-python`, `numpy`, `pandas`, `flask`, `mlflow`, `scikit-learn`). (*Note: TensorFlow was explicitly removed standardizations.*)
+- **Dependencies (`requirements.txt`)**: Strict configuration packages handling (`opencv-python`, `numpy`, `pandas`, `flask`, `flask-cors`, `requests`, `mlflow`, `scikit-learn`). TensorFlow is not used.
 - **Runtime Constraints (`runtime.txt`)**: Locks Python compilation limits formally defined to `python-3.10.13`.
 - **Data Stores**: Retains unpopulated scaffolding environments (`data/` and `experiments/`) intentionally to support iterative extraction endpoints.
 
