@@ -30,7 +30,7 @@ The application is made of decoupled components:
         2. **Payload**: Currently generates a simulated payload of `random.randint(3,10)` for `students_present` and normalizes the `engagement_score`.
 
 ### 3. Identity Auth Engine (`security/auth.py`)
-- **Verification Protocol**: Statically maintains an `API_KEY` mapped directly to `"classroom_secure_key"`. Exposes a `verify(key)` function to guard the Flask Routes.
+- **Verification Protocol**: Compares the `x-api-key` header with `API_KEY` using a constant-time check. The key is read from the `CLASSROOM_API_KEY` environment variable and falls back to the demo value `"classroom_secure_key"`. This is a demo-grade guard: the default is public, and a key bundled into a browser app is not a secret. Use real authentication before any deployment.
 
 ### 4. MLOps Experiment Tracking (`model/train_model.py` & `mlruns/`)
 - **Dataset**: Uses Scikit-Learn's Iris sample (`load_iris()`) for model bootstrapping, mapped via a 80/20 train/test split.
@@ -90,7 +90,7 @@ python model/classroom_analytics.py
 ```bash
 python -m backend.app
 ```
-Endpoints deploy successfully against `http://127.0.0.1:5001`. Ensure `x-api-key: classroom_secure_key` is passed globally during request headers.
+Endpoints deploy successfully against `http://127.0.0.1:5001`. Pass the `x-api-key` header on every request (default demo value: `classroom_secure_key`, or whatever `CLASSROOM_API_KEY` is set to). For the frontend, set `VITE_API_KEY` to match.
 
 ### 3. Start MLflow MLOps Dashboard
 ```bash
